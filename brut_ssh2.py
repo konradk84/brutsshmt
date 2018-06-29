@@ -1,4 +1,8 @@
 import sys, paramiko
+#git test import
+komentarze nie sa brane pod uwage
+import paramiko
+
 command = "quit"
 
 loginy = open("loginy.txt", "r")
