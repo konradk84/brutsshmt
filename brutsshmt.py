@@ -1,7 +1,7 @@
 #MikroTik ssh brute forcer
 import sys, paramiko
 command = "quit"
-costamaasd
+costamaasd3
 asda
 
 if len(sys.argv) < 5:
