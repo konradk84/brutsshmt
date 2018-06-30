@@ -2,6 +2,7 @@
 import sys, paramiko
 command = "quit"
 costamaasd
+asda
 
 if len(sys.argv) < 5:
     print('''\nToo few arguments. Usage: brutsshmt.py <ip> <port> <logins_file> <passwords_file>''')
@@ -30,14 +31,15 @@ while True:
             #print("Response: ", stdout.read())
             client.close()
             exit(1)
+        except paramiko.ssh_exception.BadHostKeyException as ssherr:
+            print (ssherr)
         except paramiko.ssh_exception.AuthenticationException as ssherr:
             print (ssherr)
         except paramiko.ssh_exception.SSHException as ssherr:
             print (ssherr)
         except paramiko.ssh_exception.socket.error as ssherr:
             print (ssherr)
-        except paramiko.ssh_exception.BadHostKeyException as ssherr:
-            print (ssherr)
+        
         finally:
             client.close()
 print ("done")
