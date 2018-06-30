@@ -1,3 +1,4 @@
+#MikroTik ssh brute forcer
 import sys, paramiko
 command = "quit"
 
