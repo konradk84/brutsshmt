@@ -1,7 +1,7 @@
 #MikroTik ssh brute forcer
 import sys, paramiko
 command = "quit"
-costam
+costamaasd
 
 if len(sys.argv) < 5:
     print('''\nToo few arguments. Usage: brutsshmt.py <ip> <port> <logins_file> <passwords_file>''')
