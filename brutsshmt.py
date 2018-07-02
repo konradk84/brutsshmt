@@ -2,7 +2,6 @@
 import sys, paramiko
 command = "quit"
 
-
 if len(sys.argv) < 5:
     print('''\nToo few arguments. Usage: brutsshmt.py <ip> <port> <logins_file> <passwords_file>''')
     exit()
