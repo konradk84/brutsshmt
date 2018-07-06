@@ -1,7 +1,6 @@
 #MikroTik ssh brute forcer
 import sys, paramiko
 command = "quit"
-<<<<<<< HEAD
 
 linux
 line 5 test
