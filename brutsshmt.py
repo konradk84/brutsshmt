@@ -1,11 +1,7 @@
 #MikroTik ssh brute forcer
 import sys, paramiko
-command = "quit"
 
-linux
-line 5 test
-git master branch 
-git_test_new_branch
+command = "quit"
 
 if len(sys.argv) < 5:
     print('''\nToo few arguments. Usage: brutsshmt.py <ip> <port> <logins_file> <passwords_file>''')
